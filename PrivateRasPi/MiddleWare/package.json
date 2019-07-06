@@ -1,0 +1,11 @@
+{
+  "name": "raspi_public_interface",
+  "version": "1.0.0",
+  "description": "Public interface for interacting with nodes on a private network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
