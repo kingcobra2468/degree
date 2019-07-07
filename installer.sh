@@ -81,6 +81,6 @@ read choice
 echo "Setup Complete"
 sleep 1
 
-if [[ $(echo $1 | grep -icE "yes") -eq 1 ]]; then
+if [[ $(echo $choice | grep -icE "yes") -eq 1 ]]; then
     shutdown -R now
 fi
