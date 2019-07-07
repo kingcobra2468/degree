@@ -11,5 +11,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "requests": "^0.2.2"
   }
 }

@@ -12,6 +12,13 @@ console.log(rasp_node_utils.get_my_port())
 setInterval(function(){
     
     //rasp_node_utils.upload_temperature_data(parseFloat((Math.random() * 100).toFixed(2)));
-    rasp_node_utils.upload_temperature_data(temperature_sensor_lib.get_celcius());
+    try {
+        rasp_node_utils.upload_temperature_data(temperature_sensor_lib.get_celcius());
+    }
+    catch {
+        setTimeout(function() { //sleep for 3 seconds
+        }, 3000);
+    }
+
     }, INTERVAL)
 
