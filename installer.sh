@@ -9,6 +9,7 @@ function package_exists() {
 
 function common_setup() {
 
+    sudo apt-get update
     for package in $PACKAGES; do
         sudo apt-get install $package
     done
