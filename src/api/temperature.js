@@ -1,6 +1,6 @@
-const errs = require('restify-errors');
-const Ds18b20 = require('../sensors/ds18b20');
-const { catchInternal } = require('../utils/asyncWrappers')
+/* eslint-disable import/no-unresolved */
+const Ds18b20 = require('@sensors/ds18b20');
+const { catchInternal } = require('@utils/asyncWrappers');
 
 const tempSensor = new Ds18b20();
 

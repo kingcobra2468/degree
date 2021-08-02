@@ -1,9 +1,9 @@
-function Discovery(server) {
-  server.get({ name: 'get-kelvin', path: '/api/discovery/info' },
+module.exports = (server) => {
+  server.get({ name: 'discovery', path: '/api/discovery/info' },
     (req, res, next) => {
-      res.send({ here: 1 });
+      res.send({
+        id: process.env.RPIST_ID,
+      });
       return next();
     });
-}
-
-module.exports = Discovery;
+};

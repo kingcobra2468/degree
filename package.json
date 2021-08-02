@@ -1,26 +1,29 @@
 {
-  "name": "rpist_node",
+  "name": "rpist",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "engines": {
-    "node": ">=10.24.0"
+    "node": ">=14.17"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -fr dist/*; webpack --config webpack.config.js",
+    "fix-format": "npx eslint --fix src/*",
+    "run": "node dist/rpistNode"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
     "restify": "^8.5.1",
     "restify-errors": "^8.0.2",
+    "restify-jwt-community": "^1.1.15",
     "webpack": "^5.30.0",
     "webpack-node-externals": "^2.5.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12",
-    "babel-loader": "^8.2.2",
+    "dotenv-webpack": "^7.0.3",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-import-resolver-webpack": "^0.13.1",
