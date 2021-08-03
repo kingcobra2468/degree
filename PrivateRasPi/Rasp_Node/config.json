@@ -1,9 +1,0 @@
-{
-    "parent_base_url": "http://10.0.1.22",
-    "parent_port": 9090,
-    "my_port": 9091,
-    "user_agent": "pi-thermometer",
-    "hash": "cfefd32dabde77644be0b7b4bdbc4fe51164836d",
-    "username": "",
-    "password": ""
-}
