@@ -4,13 +4,14 @@ const rjwt = require('restify-jwt-community');
 require('dotenv').config();
 
 const server = restify.createServer({
-  name: 'myapp',
+  name: 'rpist',
   version: '1.0.0',
 });
 
 server.use(rjwt({ secret: process.env.SECRET })
   .unless({ path: ['/api/auth', '/api/discovery/info'] }));
 
+// import the routess
 require('@api/discovery.js')(server);
 require('@api/temperature')(server);
 require('@api/errors')(server);

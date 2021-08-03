@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (server) => {
+  // Endpoint for generting JWT tocket for accessing protected routes.
   server.get({ name: 'auth', path: '/api/auth' },
     (req, res) => {
       const timeNow = Math.floor(+new Date() / 1000);
