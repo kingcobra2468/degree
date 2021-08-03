@@ -17,7 +17,7 @@ require('@api/temperature')(server);
 require('@api/errors')(server);
 require('@api/auth')(server);
 
-server.listen(8080, () => {
+server.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
   console.log('%s listening at %s', server.name, server.url);
 });
