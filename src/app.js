@@ -1,12 +1,23 @@
 /* eslint-disable import/no-unresolved */
 const restify = require('restify');
 const rjwt = require('restify-jwt-community');
+const untildify = require('untildify');
+const fs = require('fs');
+
 require('dotenv').config();
 
-const server = restify.createServer({
+const options = {
   name: 'rpist',
   version: '1.0.0',
-});
+};
+const mode = process.env.MODE;
+
+if (mode.toLowerCase() === 'https') {
+  options.key = fs.readFileSync(untildify(process.env.KEY_PATH));
+  options.cert = fs.readFileSync(untildify(process.env.CERT_PATH));
+}
+
+const server = restify.createServer(options);
 
 server.use(rjwt({ secret: process.env.SECRET })
   .unless({ path: ['/api/auth', '/api/discovery/info'] }));

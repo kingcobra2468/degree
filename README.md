@@ -9,6 +9,9 @@ A `.env`  file needs to be created (or copied from `.env.template`) inside of
 - **SECRET=** static secret to sign JWTs
 - **RPIST_ID=** id of the RPI for scanners to use
 - **PORT=** server port for RPIST
+- **MODE=** protcol used with options being **http** or **https**
+- **KEY_PATH=** path to the key PEM for when https used
+- **CERT_PATH=** path to the cert PEM for when https used
 
 ## **REST API**
 Communicate with RPIST could be achieved by calling the following REST methods:

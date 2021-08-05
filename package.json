@@ -19,6 +19,7 @@
     "restify": "^8.5.1",
     "restify-errors": "^8.0.2",
     "restify-jwt-community": "^1.1.15",
+    "untildify": "^4.0.0",
     "webpack": "^5.30.0",
     "webpack-node-externals": "^2.5.2"
   },
