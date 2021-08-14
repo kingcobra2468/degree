@@ -27,7 +27,7 @@ server.use(rjwt({ secret: process.env.JWT_SECRET })
 
 // import the routess
 require('@api/discovery.js')(server);
-// require('@api/temperature')(server);
+require('@api/temperature')(server);
 require('@api/errors')(server);
 require('@api/auth')(server);
 
