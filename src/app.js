@@ -19,12 +19,15 @@ if (mode.toLowerCase() === 'https') {
 
 const server = restify.createServer(options);
 
-server.use(rjwt({ secret: process.env.SECRET })
+server.use(restify.plugins.bodyParser({
+  mapParams: true,
+}));
+server.use(rjwt({ secret: process.env.JWT_SECRET })
   .unless({ path: ['/api/auth', '/api/discovery/info'] }));
 
 // import the routess
 require('@api/discovery.js')(server);
-require('@api/temperature')(server);
+// require('@api/temperature')(server);
 require('@api/errors')(server);
 require('@api/auth')(server);
 

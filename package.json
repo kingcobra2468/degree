@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rm -fr dist/*; webpack --config webpack.config.js",
     "fix-format": "npx eslint --fix src/*",
-    "run": "node dist/rpistNode"
+    "start": "node dist/rpistNode"
   },
   "author": "",
   "license": "ISC",
