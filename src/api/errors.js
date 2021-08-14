@@ -3,4 +3,8 @@ module.exports = (server) => {
   server.on('InternalServer', (req, res, err, cb) => {
     cb();
   });
+  // Endpoint for catching unauthorized errors.
+  server.on('UnauthorizedError', (req, res, err, cb) => {
+    cb();
+  });
 };

@@ -6,7 +6,8 @@ A Raspberry Pi Simple Temperature(RPIST) microservice for inexpensive room tempe
 ### **Dotenv File**
 A `.env`  file needs to be created (or copied from `.env.template`) inside of
 `/src` directory. Variables in the `.env` file include:
-- **SECRET=** static secret to sign JWTs
+- **JWT_SECRET=** static secret to sign JWTs for authorization
+- **AUTH_SECRET=** static secret for authentication
 - **RPIST_ID=** id of the RPI for scanners to use
 - **PORT=** server port for RPIST
 - **MODE=** protcol used with options being **http** or **https**
@@ -16,7 +17,7 @@ A `.env`  file needs to be created (or copied from `.env.template`) inside of
 ## **REST API**
 Communicate with RPIST could be achieved by calling the following REST methods:
 - `/api/discovery/info` **[GET]** - public endpoint for scanners. Returns the set **RPIST_ID**. 
-- `/api/auth` **[GET]** - public endpoint to get JWT to enable access of protected routes.
+- `/api/auth` **[POST]** - public endpoint to get JWT to enable access of protected routes. Pass the token set by **AUTH_SECRET** as a **application/json** payload with key **secret**. 
 - `/api/temp/get-kelvin` **[GET]** - protected endpoint to get temp in Kelvin
 - `/api/temp/get-celsius` **[GET]** - protected endpoint to get temp in Celsius
 - `/api/temp/get-fahrenheit` **[GET]** - protected endpoint to get temp in Fahrenheit
@@ -53,4 +54,4 @@ up modern node environments:
 2. Clone the repo and install dependencies with `node install`.
 3. Setup the `.env` as specified [here](#configuration).
 4. Build with webpack by running `node run build`.
-5. The `rpistNode.js` microservice should now be available to run.
+5. The `rpistNode.js` microservice should now be available to run via `node run start`.
