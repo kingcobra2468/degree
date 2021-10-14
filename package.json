@@ -1,5 +1,5 @@
 {
-  "name": "rpist",
+  "name": "degree",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rm -fr dist/*; webpack --config webpack.config.js",
     "fix-format": "npx eslint --fix src/*",
-    "start": "node dist/rpistNode"
+    "start": "node dist/degree"
   },
   "author": "",
   "license": "ISC",

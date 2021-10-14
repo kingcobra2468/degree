@@ -1,5 +1,5 @@
-# RPIST
-A Raspberry Pi Simple Temperature(RPIST) microservice for inexpensive room temperature monitoring.  
+# Degree
+A Raspberry Pi enabled room temperature monitoring microservice for inexpensive room temperature monitoring.  
 
 ## **Configuration**
 
@@ -8,16 +8,17 @@ A `.env`  file needs to be created (or copied from `.env.template`) inside of
 `/src` directory. Variables in the `.env` file include:
 - **JWT_SECRET=** static secret to sign JWTs for authorization
 - **AUTH_SECRET=** static secret for authentication
-- **RPIST_ID=** id of the RPI for scanners to use
-- **PORT=** server port for RPIST
+- **DEGREE_ID=** id of the RPI for scanners to use
+- **PORT=** server port for Degree
 - **MODE=** protcol used with options being **http** or **https**
 - **KEY_PATH=** path to the key PEM for when https used
 - **CERT_PATH=** path to the cert PEM for when https used
 
 ## **REST API**
 Communicate with RPIST could be achieved by calling the following REST methods:
-- `/api/discovery/info` **[GET]** - public endpoint for scanners. Returns the set **RPIST_ID**. 
-- `/api/auth` **[POST]** - public endpoint to get JWT to enable access of protected routes. Pass the token set by **AUTH_SECRET** as a **application/json** payload with key **secret**. 
+- `/api/discovery/info` **[GET]** - public endpoint for scanners. Returns the set **DEGREE_ID**. 
+- `/api/auth` **[POST]** - public endpoint to get JWT to enable access of protected routes. 
+Pass the token set by **AUTH_SECRET** as a **application/json** payload with key **secret**. 
 - `/api/temp/get-kelvin` **[GET]** - protected endpoint to get temp in Kelvin
 - `/api/temp/get-celsius` **[GET]** - protected endpoint to get temp in Celsius
 - `/api/temp/get-fahrenheit` **[GET]** - protected endpoint to get temp in Fahrenheit
@@ -26,7 +27,7 @@ Communicate with RPIST could be achieved by calling the following REST methods:
 via the* **AUTHORIZATION: BEARER** *header.*
 
 ## **Installation Steps (via apt)**
-The following steps will walk through the complete setup of the RPI and RPIST:
+The following steps will walk through the complete setup of the RPI and Degree:
 
 ### **Configuring the RPI**
 The following steps will guide with setting up the sensor and RPI:
@@ -38,8 +39,8 @@ and `modprobe w1-therm`.
 4. Go to **/sys/bus/w1/devices** and validate that there is
 a device with the prefix *28-*.
 
-### **Setting up RPIST**
-The following steps will guide with setting up RPIST:
+### **Setting up Degree**
+The following steps will guide with setting up Degree:
 1. Install NodeJS >14.7 on the RPI. As a result of ARM support for NodeJS
 being labeled as experimental, the following template helps with setting
 up modern node environments:
@@ -54,4 +55,4 @@ up modern node environments:
 2. Clone the repo and install dependencies with `node install`.
 3. Setup the `.env` as specified [here](#configuration).
 4. Build with webpack by running `node run build`.
-5. The `rpistNode.js` microservice should now be available to run via `node run start`.
+5. The `degree.js` microservice should now be available to run via `node run start`.

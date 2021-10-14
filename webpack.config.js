@@ -19,7 +19,7 @@ module.exports = {
     extensions: ['*', '.js'],
   },
   output: {
-    filename: 'rpistNode.js',
+    filename: 'degree.js',
     path: path.join(__dirname, '/dist'),
   },
   module: {

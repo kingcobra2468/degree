@@ -11,7 +11,7 @@ module.exports = (server) => {
 
       const timeNow = Math.floor(new Date() / 1000);
       const token = jwt.sign(
-        { id: process.env.RPIST_ID, iat: timeNow },
+        { id: process.env.DEGREE_ID, iat: timeNow },
         process.env.JWT_SECRET, { issuer: 'rpist' },
       );
       res.send({ jwt: token });
