@@ -56,3 +56,6 @@ up modern node environments:
 3. Setup the `.env` as specified [here](#configuration).
 4. Build with webpack by running `node run build`.
 5. The `degree.js` microservice should now be available to run via `node run start`.
+6. (Optional) To have Degree run automatically on boot, copy the  `degree.js` bundle 
+   into `/usr/local/bin`. Also, copy `degree.service` into `/etc/systemd/system`. Finally, run `systemctl start degree.service` and `systemctl enable degree.service`
+   to have Degree run automatically on startup.

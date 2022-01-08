@@ -1,12 +1,11 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const ShebangPlugin = require('webpack-shebang-plugin');
 
 module.exports = {
   mode: 'development',
   target: 'node',
-  externals: [nodeExternals()],
   entry: './src/app.js',
   resolve: {
     modules: ['src', path.resolve(__dirname, 'node_modules'), 'node_modules'],
@@ -31,7 +30,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new Dotenv({path: './src/.env' }),
+    new ShebangPlugin(),
+    new Dotenv({ path: './src/.env' }),
     new ESLintPlugin({ fix: true, extensions: ['js'] }),
   ],
 };

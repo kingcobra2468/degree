@@ -1,0 +1,12 @@
+[Unit]
+Description=A Raspberry Pi enabled room temperature monitoring microservice for inexpensive room temperature monitoring.
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=degree.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
