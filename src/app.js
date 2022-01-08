@@ -1,4 +1,6 @@
+#!/usr/bin/env node
 /* eslint-disable import/no-unresolved */
+// eslint-disable-next-line node/shebang
 const restify = require('restify');
 const rjwt = require('restify-jwt-community');
 const untildify = require('untildify');
