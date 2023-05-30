@@ -6,7 +6,7 @@ const ShebangPlugin = require('webpack-shebang-plugin');
 module.exports = {
   mode: 'development',
   target: 'node',
-  entry: './src/app.js',
+  entry: './src/app.ts',
   resolve: {
     modules: ['src', path.resolve(__dirname, 'node_modules'), 'node_modules'],
     alias: {
@@ -15,23 +15,24 @@ module.exports = {
       '@utils': path.resolve(__dirname, 'src', 'utils'),
       '@': path.resolve(__dirname, 'src'),
     },
-    extensions: ['*', '.js'],
+    extensions: ['*', '.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'degree.js',
+    filename: 'degree.ts',
     path: path.join(__dirname, '/dist'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
+        loader: 'ts-loader'
       },
     ],
   },
   plugins: [
     new ShebangPlugin(),
     new Dotenv({ path: './src/.env' }),
-    new ESLintPlugin({ fix: true, extensions: ['js'] }),
+    new ESLintPlugin({ fix: true, extensions: ['ts'] }),
   ],
 };

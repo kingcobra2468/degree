@@ -9,11 +9,9 @@ module.exports = {
   extends: [
     'airbnb-base',
     'plugin:node/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
-  },
+  parser: '@typescript-eslint/parser',
   rules: {
     'node/no-missing-require': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_[0-9]*' }],
@@ -26,4 +24,5 @@ module.exports = {
     },
   },
   ignorePatterns: ['dist/*'],
+  plugins: ['@typescript-eslint'],
 };
