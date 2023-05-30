@@ -6,6 +6,10 @@ const path = require('path');
  * temperature sensor.
  */
 class Ds18b20 {
+  devicePath: string
+
+  sensorId: string
+
   /**
    * Initializes instance of sensor reader.
    * @param {string} [devicePath='/sys/bus/w1/devices/'] Path to device
@@ -24,7 +28,7 @@ class Ds18b20 {
     const scanner = RegExp('28-*'); // Signature of sensor.
 
     const files = fs.readdirSync(this.devicePath);
-    this.sensorId = files.find((file) => scanner.test(file));
+    this.sensorId = files.find((file: string) => scanner.test(file));
     if (this.sensorId == null) {
       throw new Error('Thermometer not found.');
     }
@@ -48,7 +52,7 @@ class Ds18b20 {
     const dataStream = path.join(this.devicePath, this.sensorId, 'temperature');
 
     return fs.promises.readFile(dataStream)
-      .then((data) => {
+      .then((data: number) => {
         const temperature = parseInt(data.toString(), 10) / 1000;
 
         return temperature;
@@ -96,3 +100,4 @@ class Ds18b20 {
 }
 
 module.exports = Ds18b20;
+export {};

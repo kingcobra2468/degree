@@ -11,6 +11,8 @@ require('dotenv').config();
 const options = {
   name: 'rpist',
   version: '1.0.0',
+  key: '',
+  cert: '',
 };
 const mode = process.env.MODE;
 
@@ -27,7 +29,7 @@ server.use(restify.plugins.bodyParser({
 server.use(rjwt({ secret: process.env.JWT_SECRET })
   .unless({ path: ['/api/auth', '/api/discovery/info'] }));
 
-// import the routess
+// import the routes
 require('@api/discovery.js')(server);
 require('@api/temperature')(server);
 require('@api/errors')(server);

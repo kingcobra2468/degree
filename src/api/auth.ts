@@ -9,9 +9,8 @@ module.exports = (server) => {
         return next(new errs.UnauthorizedError('invalid secret'));
       }
 
-      const timeNow = Math.floor(new Date() / 1000);
       const token = jwt.sign(
-        { id: process.env.DEGREE_ID, iat: timeNow },
+        { id: process.env.DEGREE_ID, iat: Math.floor(Date.now() / 1000) },
         process.env.JWT_SECRET, { issuer: 'rpist' },
       );
       res.send({ jwt: token });
@@ -19,3 +18,5 @@ module.exports = (server) => {
       return next();
     });
 };
+
+export {};
