@@ -11,14 +11,14 @@ module.exports = {
     modules: ['src', path.resolve(__dirname, 'node_modules'), 'node_modules'],
     alias: {
       '@api': path.resolve(__dirname, 'src', 'api'),
-      '@sensors': path.resolve(__dirname, 'src', 'sensors'),
+      '@lib/sensors': path.resolve(__dirname, 'src', 'lib/sensors'),
       '@utils': path.resolve(__dirname, 'src', 'utils'),
       '@': path.resolve(__dirname, 'src'),
     },
     extensions: ['*', '.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'degree.ts',
+    filename: 'degree.js',
     path: path.join(__dirname, '/dist'),
   },
   module: {

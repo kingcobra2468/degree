@@ -2,19 +2,26 @@ const path = require('path');
 
 module.exports = {
   env: {
-    es2021: true,
     node: true,
     commonjs: true,
   },
   extends: [
     'airbnb-base',
-    'plugin:node/recommended',
+    'airbnb-typescript/base',
     'plugin:@typescript-eslint/recommended',
+    'prettier'
   ],
+  parserOptions: {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    project: ['./tsconfig.json']
+  },
   parser: '@typescript-eslint/parser',
   rules: {
     'node/no-missing-require': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_[0-9]*' }],
+    '@typescript-eslint/no-var-requires': 0,
+    'prettier/prettier' : 2
   },
   settings: {
     'import/resolver': {
@@ -24,5 +31,8 @@ module.exports = {
     },
   },
   ignorePatterns: ['dist/*'],
-  plugins: ['@typescript-eslint'],
+  plugins: [
+    '@typescript-eslint',
+    'prettier'
+  ],
 };

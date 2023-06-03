@@ -3,11 +3,11 @@
       "outDir": "./dist/",
       "noImplicitAny": true,
       "module": "commonjs",
-      "target": "es6",
       "allowJs": true,
-      "moduleResolution": "node"
+      "moduleResolution": "node",
+      "types": ["restify"]
     },
-    "include": ["src"],
+    "include": ["src", ".eslintrc.js"],
     "baseUrl": "src",
     "paths": { 
       "@/*": ["*"]
