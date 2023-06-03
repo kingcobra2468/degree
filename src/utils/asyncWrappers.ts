@@ -29,4 +29,3 @@ const catchInternal = (callback: any) =>
 module.exports = {
   catchInternal
 };
-export {};

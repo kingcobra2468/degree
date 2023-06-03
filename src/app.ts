@@ -11,7 +11,7 @@ const fs = require('fs');
 require('dotenv').config();
 
 const options = {
-  name: 'rpist',
+  name: 'degree',
   version: '1.0.0',
   key: '',
   cert: ''
@@ -61,7 +61,7 @@ server.on('BadRequestError', (req, res, err, cb) => {
   cb();
 });
 
-require('@api/discovery')(server);
+require('@api/temperature')(server);
 require('@api/healthcheck')(server);
 
 server.listen(process.env.PORT, () => {

@@ -20,7 +20,7 @@ class Ds18b20 {
   }
 
   /**
-   * Find the sensor id at the specified directory.
+   * Finds the sensor id at the specified directory.
    * @throws Exception when there is a failure is finding the sensor
    */
   findSensorId() {
@@ -41,7 +41,7 @@ class Ds18b20 {
   }
 
   /**
-   * Retrieves the "raw" temperature value from the sensor. Note
+   * Gets the "raw" temperature value from the sensor. Note
    * the raw value is in Celsius.
    * @async
    * @throws Exception if there is a failure to read temperature data
@@ -63,7 +63,7 @@ class Ds18b20 {
   }
 
   /**
-   * Retrieves the temperature(C) value from the sensor.
+   * Gets the temperature(C) value from the sensor.
    * @async
    * @throws Exception if there is a failure to read temperature data
    * @returns {int} temperature
@@ -75,7 +75,7 @@ class Ds18b20 {
   }
 
   /**
-   * Retrieves the temperature(F) value from the sensor.
+   * Gets the temperature(F) value from the sensor.
    * @async
    * @throws Exception if there is a failure to read temperature data
    * @returns {int} temperature
@@ -87,7 +87,7 @@ class Ds18b20 {
   }
 
   /**
-   * Retrieves the temperature(K) value from the sensor.
+   * Gets the temperature(K) value from the sensor.
    * @async
    * @throws Exception if there is a failure to read temperature data
    * @returns {int} temperature
@@ -100,4 +100,3 @@ class Ds18b20 {
 }
 
 module.exports = Ds18b20;
-export {};

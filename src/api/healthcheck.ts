@@ -1,7 +1,7 @@
 import { Server } from 'restify';
 
 module.exports = (server: Server) => {
-  // Gets health status of service
+  // Gets service health status
   server.get(
     { name: 'healthcheck', path: '/healthcheck' },
     (req, res, next) => {
