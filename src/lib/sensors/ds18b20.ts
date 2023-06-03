@@ -6,9 +6,9 @@ const path = require('path');
  * temperature sensor.
  */
 class Ds18b20 {
-  devicePath: string
+  devicePath: string;
 
-  sensorId: string
+  sensorId: string;
 
   /**
    * Initializes instance of sensor reader.
@@ -20,8 +20,7 @@ class Ds18b20 {
   }
 
   /**
-   * Attempts to find the sensor id at the directory specified
-   * by the constructor.
+   * Find the sensor id at the specified directory.
    * @throws Exception when there is a failure is finding the sensor
    */
   findSensorId() {
@@ -51,13 +50,14 @@ class Ds18b20 {
   async getRawTemp() {
     const dataStream = path.join(this.devicePath, this.sensorId, 'temperature');
 
-    return fs.promises.readFile(dataStream)
+    return fs.promises
+      .readFile(dataStream)
       .then((data: number) => {
         const temperature = parseInt(data.toString(), 10) / 1000;
 
         return temperature;
       })
-      .catch((_) => {
+      .catch((_: any) => {
         throw new Error('Unable to parse temperature stream.');
       });
   }
@@ -83,7 +83,7 @@ class Ds18b20 {
   async getFahrenheit() {
     const temp = await this.getRawTemp();
 
-    return (temp * (9 / 5)) + 32;
+    return temp * (9 / 5) + 32;
   }
 
   /**
