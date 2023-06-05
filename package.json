@@ -7,7 +7,7 @@
     "node": ">=14.17"
   },
   "scripts": {
-    "build": "rm -fr dist/*; webpack --config webpack.config.js",
+    "build": "rm -fr dist/*; NODE_OPTIONS=\"--max-old-space-size=2048\" NODE_ENV=production webpack --config webpack.config.js",
     "lint": "npx eslint src --ext .js,.ts --fix",
     "format": "npx prettier --config .prettierrc 'src/**/*.ts' --write",
     "start": "node dist/degree"
@@ -18,10 +18,8 @@
     "@types/restify": "^8.5.7",
     "dotenv": "^10.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
-    "jsonwebtoken": "^8.5.1",
     "restify": "^8.5.1",
     "restify-errors": "^8.0.2",
-    "restify-jwt-community": "^1.1.15",
     "untildify": "^4.0.0",
     "webpack": "^5.30.0",
     "webpack-node-externals": "^2.5.2"

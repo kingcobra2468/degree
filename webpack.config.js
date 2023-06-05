@@ -7,6 +7,7 @@ module.exports = {
   mode: 'development',
   target: 'node',
   entry: './src/app.ts',
+  parallelism: 25,
   resolve: {
     modules: ['src', path.resolve(__dirname, 'node_modules'), 'node_modules'],
     alias: {
