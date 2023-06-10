@@ -6,6 +6,10 @@ const path = require('path');
  * temperature sensor.
  */
 class Ds18b20 {
+  devicePath: string;
+
+  sensorId: string;
+
   /**
    * Initializes instance of sensor reader.
    * @param {string} [devicePath='/sys/bus/w1/devices/'] Path to device
@@ -16,15 +20,14 @@ class Ds18b20 {
   }
 
   /**
-   * Attempts to find the sensor id at the directory specified
-   * by the constructor.
+   * Finds the sensor id at the specified directory.
    * @throws Exception when there is a failure is finding the sensor
    */
   findSensorId() {
     const scanner = RegExp('28-*'); // Signature of sensor.
 
     const files = fs.readdirSync(this.devicePath);
-    this.sensorId = files.find((file) => scanner.test(file));
+    this.sensorId = files.find((file: string) => scanner.test(file));
     if (this.sensorId == null) {
       throw new Error('Thermometer not found.');
     }
@@ -38,7 +41,7 @@ class Ds18b20 {
   }
 
   /**
-   * Retrieves the "raw" temperature value from the sensor. Note
+   * Gets the "raw" temperature value from the sensor. Note
    * the raw value is in Celsius.
    * @async
    * @throws Exception if there is a failure to read temperature data
@@ -47,19 +50,20 @@ class Ds18b20 {
   async getRawTemp() {
     const dataStream = path.join(this.devicePath, this.sensorId, 'temperature');
 
-    return fs.promises.readFile(dataStream)
-      .then((data) => {
+    return fs.promises
+      .readFile(dataStream)
+      .then((data: number) => {
         const temperature = parseInt(data.toString(), 10) / 1000;
 
         return temperature;
       })
-      .catch((_) => {
+      .catch((_: any) => {
         throw new Error('Unable to parse temperature stream.');
       });
   }
 
   /**
-   * Retrieves the temperature(C) value from the sensor.
+   * Gets the temperature(C) value from the sensor.
    * @async
    * @throws Exception if there is a failure to read temperature data
    * @returns {int} temperature
@@ -71,7 +75,7 @@ class Ds18b20 {
   }
 
   /**
-   * Retrieves the temperature(F) value from the sensor.
+   * Gets the temperature(F) value from the sensor.
    * @async
    * @throws Exception if there is a failure to read temperature data
    * @returns {int} temperature
@@ -79,11 +83,11 @@ class Ds18b20 {
   async getFahrenheit() {
     const temp = await this.getRawTemp();
 
-    return (temp * (9 / 5)) + 32;
+    return temp * (9 / 5) + 32;
   }
 
   /**
-   * Retrieves the temperature(K) value from the sensor.
+   * Gets the temperature(K) value from the sensor.
    * @async
    * @throws Exception if there is a failure to read temperature data
    * @returns {int} temperature

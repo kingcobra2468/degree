@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "allowJs": true,
+      "moduleResolution": "node",
+      "types": ["restify"]
+    },
+    "include": ["src", ".eslintrc.js"],
+    "baseUrl": "src",
+    "paths": { 
+      "@/*": ["*"]
+    }
+}

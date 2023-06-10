@@ -1,3 +1,5 @@
+import { Next, Request, Response } from 'restify';
+
 const errs = require('restify-errors');
 
 /**
@@ -15,14 +17,15 @@ const errs = require('restify-errors');
  * by the exception.
  * @param {RestifyCallback} callback Callback matching signature {@link RestifyCallback}
  */
-const catchInternal = (callback) => async function errorHandler(req, res, next) {
-  try {
-    await callback(req, res, next);
-  } catch (err) {
-    next(new errs.InternalServerError(err));
-  }
-};
+const catchInternal = (callback: any) =>
+  async function errorHandler(req: Request, res: Response, next: Next) {
+    try {
+      await callback(req, res, next);
+    } catch (err) {
+      next(new errs.InternalServerError(err));
+    }
+  };
 
 module.exports = {
-  catchInternal,
+  catchInternal
 };
